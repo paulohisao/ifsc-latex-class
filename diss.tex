@@ -1,0 +1,87 @@
+% Classe para teses e dissertações no IFSC - USP
+%
+% 
+% autor: Thiago S. Mosqueiro
+% e-mail contato: thiago -dot- mosqueiro (at) ursa.ifsc.usp.br
+% Site com informações sobre a classe:
+% http://thmosqueiro.vandroiy.com/ifsc-latex/
+%
+% Se você estiver chamando latex + dvi2ps + ps2pdf, sua folha sairá em letter (não a4)
+% a menos que você: (i) adicione -sPAPERSIZE=a4 à chamada do ps2pdf ou (ii) configure
+% como saída padrão o papel a4.
+%
+%
+% Bom uso de LaTeX a todos!!
+%
+
+
+\documentclass[a4paper, espaco=emeio, dvips, plainheader, twoside, openright, final, normalfigtabnum, tocpage=plain, titulodireita]{ifsc}
+  
+  
+  \usepackage{additionals}
+
+% A opção linktocpage é muito importante para poder fazer com que TOC tenha
+% quebra de linhas!!!
+  \usepackage[colorlinks, hyperindex, breaklinks]{hyperref}
+  \hypersetup
+  {
+    pdftitle = {T\'{\i}tulo da sua tese},
+    pdfauthor = {Nome do autor},
+    pdfsubject = {Assunto da tese},
+    pdfkeywords = {Palavras-chave},
+    pdfcreator = {Como você compilou o tex?},
+    linkbordercolor = {1 0 0},
+    pdftoolbar = true,
+    pdfmenubar = true,
+    colorlinks = false,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+  }
+
+  \makeindex
+  
+  \def\@cite#1#2{({#1\if@tempswa:#2\fi})}
+  
+  \setlength{\footnotemargin}{0in}
+
+
+  % Pasta onde voce vai deixar suas imagens
+  \graphicspath{{figuras/}}
+
+ % Caso seja a versão corrigida, descomente abaixo.
+ % \renewcommand{\IFSCversao}{Vers\~ao Corrigida\\ (versão original disponível na Unidade que aloja o Programa)}
+
+  \usepackage{tikz}
+  
+  % Neste arquivo você pode inserir suas definições (veja exemplo)
+  \include{arquivos_tex/definicoes}
+
+  \begin{document}
+
+
+    \include{arquivos_tex/titlepage}
+
+    \include{arquivos_tex/aknowledgements}
+
+    \include{arquivos_tex/resumo}
+
+    \listoffigures
+    \newpage
+
+    \listoftables
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \include{arquivos_tex/intro}
+	
+    \bibliographystyle{ifsc_abnt}
+    \bibliography{teste.bib}
+
+    \appendix
+    
+    \include{arquivos_tex/intro2}
+  
+  \end{document}

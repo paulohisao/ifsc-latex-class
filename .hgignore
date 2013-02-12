@@ -1,0 +1,14 @@
+# use glob syntax.
+syntax: glob
+
+*~
+
+# undesirable latex outputs
+*.aux 
+*.out 
+*.log 
+*.blg 
+*.idx 
+*.lof 
+*.toc 
+*.lot
